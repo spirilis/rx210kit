@@ -227,6 +227,27 @@ SECTIONS
     PROVIDE (__dataflash = .);
   } > DATAFLASH
 
+  /* JTAG password */
+  PROVIDE (__idkey_0 = 0xFFFFFFFF);
+  PROVIDE (__idkey_1 = 0xFFFFFFFF);
+  PROVIDE (__idkey_2 = 0xFFFFFFFF);
+  PROVIDE (__idkey_3 = 0xFFFFFFFF);
+
+  .idkey (0xFFFFFFA0) :
+  {
+    LONG (__idkey_0);
+    LONG (__idkey_1);
+    LONG (__idkey_2);
+    LONG (__idkey_3);
+  }
+
+  /* ROM protect bit */
+  PROVIDE (__romprotect = 0xFFFFFFFF);
+
+  .romprotect (0xFFFFFF9C) :
+  {
+    LONG (__romprotect);
+  }
 
   /* The rest are all not normally part of the runtime image.  */
 
